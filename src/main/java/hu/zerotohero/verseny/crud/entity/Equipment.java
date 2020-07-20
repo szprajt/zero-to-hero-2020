@@ -9,7 +9,7 @@ public class Equipment {
     private Long id;
     private String name;
     private String type;
-    @ManyToOne(cascade = CascadeType.REFRESH)
+    @ManyToOne
     @JoinColumn(name = "fk_location_id")
     private Location location;
 
@@ -47,5 +47,15 @@ public class Equipment {
     public Equipment setLocation(Location location) {
         this.location = location;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return "Equipment{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", type='" + type + '\'' +
+                ", location=" + location +
+                '}';
     }
 }
