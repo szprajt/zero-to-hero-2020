@@ -12,7 +12,7 @@ public class Equipment {
     private Long id;
     private String name;
     private String type;
-    @ManyToOne(targetEntity = Location.class)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="location_id")
     private Location location;
 
