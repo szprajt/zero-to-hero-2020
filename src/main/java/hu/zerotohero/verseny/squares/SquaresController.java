@@ -40,17 +40,17 @@ public class SquaresController {
         int distac = squareDistance(a, b);
         int distad = squareDistance(a, b);
 
-        if (distab == distac && 2 * distab == distad) {
+        if ((distab == distac) && (2 * distab == distad)) {
             int dist = squareDistance(b, d);
             return (dist == squareDistance(c, d) && dist == distab);
         }
 
-        if (distac == distad && 2 * distac == distab) {
+        if ((distac == distad) && (2 * distac == distab)) {
             int dist = squareDistance(b, c);
             return (dist == squareDistance(b, d) && dist == distac);
         }
 
-        if (distab == distad && 2 * distab == distac) {
+        if ((distab == distad) && (2 * distab == distac)) {
             int dist = squareDistance(b, c);
             return (dist == squareDistance(c, d) && dist == distab);
         }
