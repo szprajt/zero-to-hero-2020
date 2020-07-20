@@ -2,10 +2,7 @@ package hu.zerotohero.verseny.crud;
 
 import hu.zerotohero.verseny.crud.model.LocationRequest;
 import hu.zerotohero.verseny.crud.model.LocationResponse;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/crud")
@@ -15,7 +12,7 @@ public class CrudController {
 
     @PostMapping
     @RequestMapping(value = "/api/location/", headers = "Accept=application/json")
-    public LocationResponse persistLocation(@RequestBody final LocationRequest locationRequest) {
+    public @ResponseBody LocationResponse persistLocation(@RequestBody final LocationRequest locationRequest) {
         return new LocationResponse().setAddress(locationRequest.getAddress()).setName(locationRequest.getName());
     }
 }
