@@ -12,8 +12,8 @@ public class Equipment {
     private Long id;
     private String name;
     private String type;
-    @ManyToOne
-    @Fetch(FetchMode.JOIN)
+    @ManyToOne(targetEntity = Location.class)
+    @JoinColumn(name="location_id")
     private Location location;
 
     public Long getId() {
