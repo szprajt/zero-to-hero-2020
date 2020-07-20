@@ -11,7 +11,7 @@ public class CrudController {
     //TODO implement endpoints
 
     @PostMapping
-    @RequestMapping(value = "/api/location/", headers = "Accept=application/json", produces = "application/json")
+    @RequestMapping(value = "/api/location/", headers = "Accept=application/json")
     public @ResponseBody
     LocationResponse persistLocation(@RequestBody final LocationRequest locationRequest) {
         return new LocationResponse().setAddress(locationRequest.getAddress()).setName(locationRequest.getName());
