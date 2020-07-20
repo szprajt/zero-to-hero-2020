@@ -12,7 +12,7 @@ import org.springframework.web.server.ResponseStatusException;
 public class HTTPStatusController {
 
     @GetMapping("/getStatusDescription")
-    public String getStatusDescription(@RequestParam(value = "statusCode", defaultValue = "500") Integer statusCode) throws NotFoundException {
+    public String getStatusDescription(@RequestParam(value = "statusCode", defaultValue = "500") Integer statusCode) {
         try {
             HttpStatus result = HttpStatus.valueOf(statusCode);
             return "Query: " + statusCode + " Response: " + result.getReasonPhrase();
