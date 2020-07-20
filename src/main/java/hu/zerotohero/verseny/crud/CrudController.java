@@ -30,6 +30,8 @@ public class CrudController {
     @RequestMapping(value = "/api/equipment/", consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public Equipment persistEquipment(@RequestBody final Equipment equipment) {
-        return crudService.persistEquipment(equipment);
+        Equipment equipment1 = crudService.persistEquipment(equipment);
+        System.out.println(equipment.toString());
+        return equipment1;
     }
 }
