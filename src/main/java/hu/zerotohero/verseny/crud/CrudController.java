@@ -1,5 +1,6 @@
 package hu.zerotohero.verseny.crud;
 
+import hu.zerotohero.verseny.crud.entity.Equipment;
 import hu.zerotohero.verseny.crud.entity.Location;
 import hu.zerotohero.verseny.crud.service.CrudService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,5 +24,12 @@ public class CrudController {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public Location persistLocation(@RequestBody final Location locationRequest) {
         return crudService.persistLocation(locationRequest);
+    }
+
+    @PostMapping
+    @RequestMapping(value = "/api/equipment/", consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public Equipment persistEquipment(@RequestBody final Equipment equipment) {
+        return crudService.persistEquipment(equipment);
     }
 }
