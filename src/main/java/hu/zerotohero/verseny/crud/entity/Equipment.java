@@ -9,8 +9,8 @@ public class Equipment {
     private Long id;
     private String name;
     private String type;
-    @ManyToOne
-    @JoinColumn(name = "FK_LocationId")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "location_id")
     private Location location;
 
     public Long getId() {
