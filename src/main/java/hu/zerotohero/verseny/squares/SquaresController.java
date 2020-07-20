@@ -39,6 +39,7 @@ public class SquaresController {
         int distab = squareDistance(a, b);
         int distac = squareDistance(a, b);
         int distad = squareDistance(a, b);
+        System.out.println(distab + " " + distac + " " + distad);
 
         if ((distab == distac) && (2 * distab == distad)) {
             int dist = squareDistance(b, d);
