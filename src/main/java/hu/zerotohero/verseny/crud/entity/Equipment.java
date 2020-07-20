@@ -12,7 +12,7 @@ public class Equipment {
     private Long id;
     private String name;
     private String type;
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name="location_id")
     private Location location;
 

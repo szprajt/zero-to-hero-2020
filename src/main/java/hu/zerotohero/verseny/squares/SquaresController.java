@@ -14,6 +14,18 @@ public class SquaresController {
 
     @GetMapping("/getNumberOfSquares")
     public Integer getNumberOfSquares(@RequestBody List<Point> points) {
-        return null; //TODO implement me!
+        int result = 0;
+        if (points.size() > 1) {
+            for (int i = 0; i < points.size() - 1; i++) {
+                for (int j = i + 1; j < points.size(); j++) {
+                    Point first = points.get(i);
+                    Point second = points.get(j);
+                    if (first.x != second.x && (first.x - second.x == second.y - second.x)) {
+                        result++;
+                    }
+                }
+            }
+        }
+        return result;
     }
 }
