@@ -1,5 +1,8 @@
 package hu.zerotohero.verseny.crud.entity;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,6 +14,7 @@ public class Equipment {
     private String type;
     @ManyToOne
     @JoinColumn(name = "fk_location_id")
+    @Fetch(FetchMode.JOIN)
     private Location location;
 
     public Long getId() {
