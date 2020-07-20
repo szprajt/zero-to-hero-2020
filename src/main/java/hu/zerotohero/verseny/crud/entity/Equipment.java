@@ -9,7 +9,7 @@ public class Equipment {
     private Long id;
     private String name;
     private String type;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_location_id")
     private Location location;
 
