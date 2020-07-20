@@ -37,8 +37,8 @@ public class SquaresController {
 
     private boolean isSquare(Point a, Point b, Point c, Point d) {
         int distab = squareDistance(a, b);
-        int distac = squareDistance(a, b);
-        int distad = squareDistance(a, b);
+        int distac = squareDistance(a, c);
+        int distad = squareDistance(a, d);
         System.out.println(distab + " " + distac + " " + distad);
 
         if ((distab == distac) && (2 * distab == distad)) {
