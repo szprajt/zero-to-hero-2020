@@ -13,7 +13,6 @@ public class Equipment {
     private String name;
     private String type;
     @ManyToOne
-    @JoinColumn(name = "fk_location_id")
     @Fetch(FetchMode.JOIN)
     private Location location;
 
