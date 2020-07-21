@@ -44,7 +44,7 @@ public class CrudService {
         Optional<Location> location = locationRepository.findById(employee.getWorksAt().getId());
         Optional<Equipment> equipment = Optional.ofNullable(employee.getOperates())
                 .map(equipment1 -> equipmentRepository.findById(equipment1.getId()))
-                .orElse(null);
+                .orElse(Optional.empty());
         if (!location.isPresent()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Location not found based on the request");
         }
