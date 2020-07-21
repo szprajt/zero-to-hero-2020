@@ -4,6 +4,7 @@ import hu.zerotohero.verseny.crud.model.Type;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Equipment {
@@ -15,7 +16,7 @@ public class Equipment {
     private Type type;
     @ManyToOne
     @JoinColumn(name = "location_id")
-    @NotBlank(message = "Location is required")
+    @NotNull(message = "Location is required")
     private Location locatedAt;
 
     public Long getId() {
