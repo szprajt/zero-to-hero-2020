@@ -5,7 +5,10 @@ import hu.zerotohero.verseny.crud.entity.Location;
 import hu.zerotohero.verseny.crud.repository.EquipmentRepository;
 import hu.zerotohero.verseny.crud.repository.LocationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class CrudService {
@@ -20,6 +23,11 @@ public class CrudService {
     }
 
     public Equipment persistEquipment(final Equipment equipment) {
-        return equipmentRepository.save(equipment);
+        Optional<Location> location = locationRepository.findById(equipment.getLocation().getId());
+        if (location.isPresent()) {
+            return equipmentRepository.save(equipment.setLocation(location.get()));
+        } else {
+            throw new InvalidDataAccessApiUsageException("Not existing location was provided for the given request");
+        }
     }
 }

@@ -12,8 +12,8 @@ public class Equipment {
     private Long id;
     private String name;
     private String type;
-    @ManyToOne
-    @JoinColumn(name="location_id")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "location_id")
     private Location location;
 
     public Long getId() {

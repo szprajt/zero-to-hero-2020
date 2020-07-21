@@ -3,6 +3,8 @@ package hu.zerotohero.verseny.crud;
 import hu.zerotohero.verseny.crud.entity.Equipment;
 import hu.zerotohero.verseny.crud.entity.Location;
 import hu.zerotohero.verseny.crud.service.CrudService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,15 +16,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/crud")
 public class CrudController {
 
+    private static final Logger LOG = LoggerFactory.getLogger(CrudController.class);
+
     @Autowired
     private CrudService crudService;
-
-    //TODO implement endpoints
 
     @PostMapping
     @RequestMapping(value = "/api/location/", consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public Location persistLocation(@RequestBody final Location locationRequest) {
+        LOG.info("New incoming location request: {}",locationRequest);
         return crudService.persistLocation(locationRequest);
     }
 
@@ -31,7 +34,6 @@ public class CrudController {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public Equipment persistEquipment(@RequestBody final Equipment equipment) {
         Equipment equipment1 = crudService.persistEquipment(equipment);
-        System.out.println(equipment.toString());
         return equipment1;
     }
 }
