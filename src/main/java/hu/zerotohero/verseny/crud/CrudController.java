@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/crud")
 public class CrudController {
@@ -24,7 +26,7 @@ public class CrudController {
     @PostMapping
     @RequestMapping(value = "/api/location/", consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public Location persistLocation(@RequestBody final Location locationRequest) {
+    public Location persistLocation(@Valid @RequestBody final Location locationRequest) {
         LOG.info("New incoming location request: {}", locationRequest);
         return crudService.persistLocation(locationRequest);
     }
@@ -32,7 +34,7 @@ public class CrudController {
     @PostMapping
     @RequestMapping(value = "/api/equipment/", consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public Equipment persistEquipment(@RequestBody final Equipment equipment) {
+    public Equipment persistEquipment(@Valid @RequestBody final Equipment equipment) {
         LOG.info("New incoming location request: {}", equipment);
         Equipment equipment1 = crudService.persistEquipment(equipment);
         return equipment1;
