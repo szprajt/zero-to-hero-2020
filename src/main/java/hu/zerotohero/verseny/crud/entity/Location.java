@@ -8,17 +8,17 @@ import javax.validation.constraints.NotBlank;
 public class Location {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
+    private long id;
     @NotBlank(message = "Name is required")
     private String name;
     @NotBlank(message = "Address is required")
     private String address;
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public Location setId(Long id) {
+    public Location setId(long id) {
         this.id = id;
         return this;
     }

@@ -30,7 +30,7 @@ public class ManagerValidator implements Validatable {
     }
 
     private boolean checkEmployee(Employee original, Employee checked) {
-        return !checked.getId().equals(original.getId()) && Job.MANAGER.equals(checked.getJob());
+        return (checked.getId() != original.getId()) && Job.MANAGER.equals(checked.getJob());
     }
 }
 

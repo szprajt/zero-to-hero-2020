@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
+    private long id;
     @NotBlank(message = "Name is required")
     private String name;
     @NotNull(message = "job is required")
@@ -23,11 +23,11 @@ public class Employee {
     @JoinColumn(name = "equipment_id", referencedColumnName = "id")
     private Equipment operates;
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public Employee setId(Long id) {
+    public Employee setId(long id) {
         this.id = id;
         return this;
     }

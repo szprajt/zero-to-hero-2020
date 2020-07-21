@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 public class Equipment {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
+    private long id;
     private String name;
     @NotNull(message = "type is required")
     private Type type;
@@ -18,11 +18,11 @@ public class Equipment {
     @NotNull(message = "locatedAt is required")
     private Location locatedAt;
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public Equipment setId(Long id) {
+    public Equipment setId(long id) {
         this.id = id;
         return this;
     }
