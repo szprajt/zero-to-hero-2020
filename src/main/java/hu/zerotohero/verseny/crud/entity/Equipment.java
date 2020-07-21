@@ -1,9 +1,9 @@
 package hu.zerotohero.verseny.crud.entity;
 
-import com.sun.istack.NotNull;
 import hu.zerotohero.verseny.crud.model.Type;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Equipment {
@@ -11,11 +11,11 @@ public class Equipment {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String name;
-    @NotNull
+    @NotBlank(message = "Type is required")
     private Type type;
     @ManyToOne
     @JoinColumn(name = "location_id")
-    @NotNull
+    @NotBlank(message = "Location is required")
     private Location locatedAt;
 
     public Long getId() {

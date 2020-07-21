@@ -1,6 +1,7 @@
 package hu.zerotohero.verseny.crud.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 
 @Entity
@@ -8,7 +9,9 @@ public class Location {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
+    @NotBlank(message = "Name is required")
     private String name;
+    @NotBlank(message = "Address is required")
     private String address;
 
     public Long getId() {
