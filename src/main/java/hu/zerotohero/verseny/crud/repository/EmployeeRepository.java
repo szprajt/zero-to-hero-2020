@@ -10,5 +10,5 @@ import java.util.List;
 public interface EmployeeRepository extends CrudRepository<Employee, Long> {
 
     @Query(value = "SELECT * FROM Employee e WHERE e.location_id = :locationId")
-    List<Employee> findEmployeesByLocation(@Param("locationId") long locationId);
+    List<Employee> findByLocation(@Param("locationId") long locationId);
 }
