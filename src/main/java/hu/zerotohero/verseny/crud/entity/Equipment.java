@@ -1,20 +1,19 @@
 package hu.zerotohero.verseny.crud.entity;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
+import hu.zerotohero.verseny.crud.model.Type;
 
 import javax.persistence.*;
 
 @Entity
 public class Equipment {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String name;
-    private String type;
-    @ManyToOne(cascade = CascadeType.ALL)
+    private Type type;
+    @ManyToOne
     @JoinColumn(name = "location_id")
-    private Location location;
+    private Location locatedAt;
 
     public Long getId() {
         return id;
@@ -34,21 +33,21 @@ public class Equipment {
         return this;
     }
 
-    public String getType() {
+    public Type getType() {
         return type;
     }
 
-    public Equipment setType(String type) {
+    public Equipment setType(Type type) {
         this.type = type;
         return this;
     }
 
-    public Location getLocation() {
-        return location;
+    public Location getLocatedAt() {
+        return locatedAt;
     }
 
-    public Equipment setLocation(Location location) {
-        this.location = location;
+    public Equipment setLocatedAt(Location locatedAt) {
+        this.locatedAt = locatedAt;
         return this;
     }
 
@@ -58,7 +57,7 @@ public class Equipment {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", type='" + type + '\'' +
-                ", location=" + location +
+                ", locatedAt=" + locatedAt +
                 '}';
     }
 }

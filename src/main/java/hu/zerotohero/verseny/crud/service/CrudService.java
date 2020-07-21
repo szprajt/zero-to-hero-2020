@@ -24,11 +24,11 @@ public class CrudService {
     }
 
     public Equipment persistEquipment(final Equipment equipment) {
-        Optional<Location> location = locationRepository.findById(equipment.getLocation().getId());
+        Optional<Location> location = locationRepository.findById(equipment.getLocatedAt().getId());
         if (location.isPresent()) {
-            return equipmentRepository.save(equipment.setLocation(location.get()));
+            return equipmentRepository.save(equipment.setLocatedAt(location.get()));
         } else {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Not existing location was provided for the given request");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Location not found based on the request");
         }
     }
 }

@@ -25,7 +25,7 @@ public class CrudController {
     @RequestMapping(value = "/api/location/", consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public Location persistLocation(@RequestBody final Location locationRequest) {
-        LOG.info("New incoming location request: {}",locationRequest);
+        LOG.info("New incoming location request: {}", locationRequest);
         return crudService.persistLocation(locationRequest);
     }
 
@@ -33,6 +33,7 @@ public class CrudController {
     @RequestMapping(value = "/api/equipment/", consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public Equipment persistEquipment(@RequestBody final Equipment equipment) {
+        LOG.info("New incoming location request: {}", equipment);
         Equipment equipment1 = crudService.persistEquipment(equipment);
         return equipment1;
     }
