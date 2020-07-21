@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class CrudService {
+public class PersisterService {
 
     @Autowired
     private LocationRepository locationRepository;
@@ -61,21 +61,21 @@ public class CrudService {
 
     public void deleteLocation(final long id) {
         if (!locationRepository.existsById(id)) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Location not foundt");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Location not found");
         }
         locationRepository.deleteById(id);
     }
 
     public void deleteEquipment(final long id) {
         if (!equipmentRepository.existsById(id)) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Equipment not foundt");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Equipment not found");
         }
         equipmentRepository.deleteById(id);
     }
 
     public void deleteEmployee(final long id) {
         if (!employeeRepository.existsById(id)) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Employee not foundt");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Employee not found");
         }
         employeeRepository.deleteById(id);
     }

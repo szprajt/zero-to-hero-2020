@@ -3,7 +3,7 @@ package hu.zerotohero.verseny.crud;
 import hu.zerotohero.verseny.crud.entity.Employee;
 import hu.zerotohero.verseny.crud.entity.Equipment;
 import hu.zerotohero.verseny.crud.entity.Location;
-import hu.zerotohero.verseny.crud.service.CrudService;
+import hu.zerotohero.verseny.crud.service.PersisterService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import javax.websocket.server.PathParam;
 
 @RestController
 @RequestMapping("/crud")
@@ -21,14 +20,14 @@ public class CrudController {
     private static final Logger LOG = LoggerFactory.getLogger(CrudController.class);
 
     @Autowired
-    private CrudService crudService;
+    private PersisterService persisterService;
 
     @PostMapping
     @RequestMapping(value = "/api/location/", consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public Location persistLocation(@Valid @RequestBody final Location locationRequest) {
         LOG.info("New incoming location request: {}", locationRequest);
-        return crudService.persistLocation(locationRequest);
+        return persisterService.persistLocation(locationRequest);
     }
 
     @PostMapping
@@ -36,7 +35,7 @@ public class CrudController {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public Equipment persistEquipment(@Valid @RequestBody final Equipment equipment) {
         LOG.info("New incoming location request: {}", equipment);
-        return crudService.persistEquipment(equipment);
+        return persisterService.persistEquipment(equipment);
     }
 
     @PostMapping
@@ -44,7 +43,7 @@ public class CrudController {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public Employee persistEmployee(@Valid @RequestBody final Employee employee) {
         LOG.info("New incoming employee request: {}", employee);
-        return crudService.persistEmployee(employee);
+        return persisterService.persistEmployee(employee);
     }
 
     @DeleteMapping
@@ -52,8 +51,8 @@ public class CrudController {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity deleteLocation(@PathVariable("id") Long id) {
         LOG.info("New incoming location delete request: {}", id);
-        crudService.deleteLocation(id);
-        return ResponseEntity.accepted().build();
+        persisterService.deleteLocation(id);
+        return ResponseEntity.ok().build();
     }
 
     @DeleteMapping
@@ -61,8 +60,8 @@ public class CrudController {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity deleteEmployee(@PathVariable("id") Long id) {
         LOG.info("New incoming employee delete request: {}", id);
-        crudService.deleteEmployee(id);
-        return ResponseEntity.accepted().build();
+        persisterService.deleteEmployee(id);
+        return ResponseEntity.ok().build();
     }
 
     @DeleteMapping
@@ -70,7 +69,7 @@ public class CrudController {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity deleteEquipment(@PathVariable("id") Long id) {
         LOG.info("New incoming equipment delete request: {}", id);
-        crudService.deleteEquipment(id);
-        return ResponseEntity.accepted().build();
+        persisterService.deleteEquipment(id);
+        return ResponseEntity.ok().build();
     }
 }
