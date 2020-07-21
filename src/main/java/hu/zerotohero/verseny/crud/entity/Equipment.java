@@ -11,11 +11,11 @@ public class Equipment {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String name;
-    @NotNull(message = "Type is required")
+    @NotNull(message = "type is required")
     private Type type;
     @ManyToOne
     @JoinColumn(name = "location_id")
-    @NotNull(message = "Location is required")
+    @NotNull(message = "locatedAt is required")
     private Location locatedAt;
 
     public Long getId() {

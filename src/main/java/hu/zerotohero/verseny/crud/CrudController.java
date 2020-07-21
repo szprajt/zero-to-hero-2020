@@ -1,5 +1,6 @@
 package hu.zerotohero.verseny.crud;
 
+import hu.zerotohero.verseny.crud.entity.Employee;
 import hu.zerotohero.verseny.crud.entity.Equipment;
 import hu.zerotohero.verseny.crud.entity.Location;
 import hu.zerotohero.verseny.crud.service.CrudService;
@@ -36,7 +37,14 @@ public class CrudController {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public Equipment persistEquipment(@Valid @RequestBody final Equipment equipment) {
         LOG.info("New incoming location request: {}", equipment);
-        Equipment equipment1 = crudService.persistEquipment(equipment);
-        return equipment1;
+        return crudService.persistEquipment(equipment);
+    }
+
+    @PostMapping
+    @RequestMapping(value = "/api/employee/", consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public Employee persistEmployee(@Valid @RequestBody final Employee employee) {
+        LOG.info("New incoming employee request: {}", employee);
+        return crudService.persistEmployee(employee);
     }
 }
