@@ -23,7 +23,7 @@ public class ManagerValidator implements Validatable {
 
     @Override
     public void validate(Employee employee) {
-        List<Employee> employees = employeeRepository.findByLocation(employee.getWorksAt().getId());
+        List<Employee> employees = employeeRepository.findByWorksAt(employee.getWorksAt().getId());
         if (employees.stream().anyMatch(employee1 -> checkEmployee(employee, employee1))) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Only one manager should work on one location");
         }
