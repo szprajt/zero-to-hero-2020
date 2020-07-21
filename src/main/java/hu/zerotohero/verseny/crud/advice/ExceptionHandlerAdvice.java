@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.stream.Collectors;
+
 @RestControllerAdvice
 public class ExceptionHandlerAdvice {
 
@@ -17,7 +19,12 @@ public class ExceptionHandlerAdvice {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity handleValidationException(MethodArgumentNotValidException e) {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getBindingResult().getAllErrors());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(e.getBindingResult()
+                        .getAllErrors()
+                        .stream()
+                        .map(objectError -> objectError.getDefaultMessage())
+                        .collect(Collectors.joining(" , ")));
     }
 
 }
