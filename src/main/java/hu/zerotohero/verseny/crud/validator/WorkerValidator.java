@@ -3,12 +3,12 @@ package hu.zerotohero.verseny.crud.validator;
 import hu.zerotohero.verseny.crud.entity.Employee;
 import hu.zerotohero.verseny.crud.model.Job;
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Objects;
 
-@Component
+@Service
 public class WorkerValidator implements Validatable {
 
     @Override
