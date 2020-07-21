@@ -12,7 +12,7 @@ public class Equipment {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String name;
-    @NotBlank(message = "Type is required")
+    @NotNull(message = "Type is required")
     private Type type;
     @ManyToOne
     @JoinColumn(name = "location_id")
