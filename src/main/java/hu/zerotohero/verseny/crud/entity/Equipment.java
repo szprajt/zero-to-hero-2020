@@ -3,7 +3,6 @@ package hu.zerotohero.verseny.crud.entity;
 import hu.zerotohero.verseny.crud.model.Type;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Entity
