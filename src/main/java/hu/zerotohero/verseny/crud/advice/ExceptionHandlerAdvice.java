@@ -1,5 +1,6 @@
 package hu.zerotohero.verseny.crud.advice;
 
+import org.hibernate.exception.ConstraintViolationException;
 import org.postgresql.util.PSQLException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,9 +29,9 @@ public class ExceptionHandlerAdvice {
                         .collect(Collectors.toList()));
     }
 
-    @ExceptionHandler(PSQLException.class)
-    public ResponseEntity handlePSQLException(PSQLException e) {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getServerErrorMessage());
+    @ExceptionHandler(ConstraintViolationException.class)
+    public ResponseEntity handlePSQLException(ConstraintViolationException e) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getSQLException().getMessage());
     }
 
 }
