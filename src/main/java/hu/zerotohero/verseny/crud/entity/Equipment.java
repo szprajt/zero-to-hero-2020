@@ -1,5 +1,6 @@
 package hu.zerotohero.verseny.crud.entity;
 
+import com.sun.istack.NotNull;
 import hu.zerotohero.verseny.crud.model.Type;
 
 import javax.persistence.*;
@@ -10,9 +11,11 @@ public class Equipment {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String name;
+    @NotNull
     private Type type;
     @ManyToOne
     @JoinColumn(name = "location_id")
+    @NotNull
     private Location locatedAt;
 
     public Long getId() {
