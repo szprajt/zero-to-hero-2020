@@ -8,12 +8,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.websocket.server.PathParam;
 
 @RestController
 @RequestMapping("/crud")
@@ -46,5 +45,32 @@ public class CrudController {
     public Employee persistEmployee(@Valid @RequestBody final Employee employee) {
         LOG.info("New incoming employee request: {}", employee);
         return crudService.persistEmployee(employee);
+    }
+
+    @DeleteMapping
+    @RequestMapping(value = "/api/location/{id}/", consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity deleteLocation(@PathParam("id") long id) {
+        LOG.info("New incoming location delete request: {}", id);
+        crudService.deleteLocation(id);
+        return ResponseEntity.accepted().build();
+    }
+
+    @DeleteMapping
+    @RequestMapping(value = "/api/employee/{id}/", consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity deleteEmployee(@PathParam("id") long id) {
+        LOG.info("New incoming employee delete request: {}", id);
+        crudService.deleteEmployee(id);
+        return ResponseEntity.accepted().build();
+    }
+
+    @DeleteMapping
+    @RequestMapping(value = "/api/equipment/{id}/", consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity deleteEquipment(@PathParam("id") long id) {
+        LOG.info("New incoming equipment delete request: {}", id);
+        crudService.deleteEquipment(id);
+        return ResponseEntity.accepted().build();
     }
 }
