@@ -21,7 +21,7 @@ public class WorkerValidator implements Validatable {
         if (Objects.isNull(employee.getOperates())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "For " + employee.getJob() + " equipment is essential");
         } else {
-            if (employee.getWorksAt().getId() != employee.getOperates().getLocatedAt().getId()) {
+            if (Objects.nonNull(employee.getOperates().getLocatedAt()) && employee.getWorksAt().getId() != employee.getOperates().getLocatedAt().getId()) {
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Equipment should be on the same location as the working place");
             }
         }
