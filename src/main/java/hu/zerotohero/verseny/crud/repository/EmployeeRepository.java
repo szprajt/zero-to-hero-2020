@@ -11,5 +11,5 @@ import java.util.List;
 public interface EmployeeRepository extends CrudRepository<Employee, Long> {
 
     List<Employee> findByWorksAt(Location location);
-    
+
 }
