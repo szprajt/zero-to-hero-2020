@@ -50,7 +50,7 @@ public class CrudController {
     @DeleteMapping
     @RequestMapping(value = "/api/location/{id}/", consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity deleteLocation(@PathParam("id") Long id) {
+    public ResponseEntity deleteLocation(@PathVariable("id") Long id) {
         LOG.info("New incoming location delete request: {}", id);
         crudService.deleteLocation(id);
         return ResponseEntity.accepted().build();
@@ -59,7 +59,7 @@ public class CrudController {
     @DeleteMapping
     @RequestMapping(value = "/api/employee/{id}/", consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity deleteEmployee(@PathParam("id") Long id) {
+    public ResponseEntity deleteEmployee(@PathVariable("id") Long id) {
         LOG.info("New incoming employee delete request: {}", id);
         crudService.deleteEmployee(id);
         return ResponseEntity.accepted().build();
@@ -68,7 +68,7 @@ public class CrudController {
     @DeleteMapping
     @RequestMapping(value = "/api/equipment/{id}/", consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity deleteEquipment(@PathParam("id") Long id) {
+    public ResponseEntity deleteEquipment(@PathVariable("id") Long id) {
         LOG.info("New incoming equipment delete request: {}", id);
         crudService.deleteEquipment(id);
         return ResponseEntity.accepted().build();
