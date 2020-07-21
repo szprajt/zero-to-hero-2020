@@ -5,8 +5,9 @@ import hu.zerotohero.verseny.crud.entity.Location;
 import hu.zerotohero.verseny.crud.repository.EquipmentRepository;
 import hu.zerotohero.verseny.crud.repository.LocationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.InvalidDataAccessApiUsageException;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Optional;
 
@@ -27,7 +28,7 @@ public class CrudService {
         if (location.isPresent()) {
             return equipmentRepository.save(equipment.setLocation(location.get()));
         } else {
-            throw new InvalidDataAccessApiUsageException("Not existing location was provided for the given request");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Not existing location was provided for the given request");
         }
     }
 }
