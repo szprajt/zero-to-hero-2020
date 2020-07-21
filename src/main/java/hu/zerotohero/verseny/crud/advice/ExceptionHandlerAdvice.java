@@ -24,7 +24,7 @@ public class ExceptionHandlerAdvice {
                         .getAllErrors()
                         .stream()
                         .map(objectError -> objectError.getDefaultMessage())
-                        .collect(Collectors.joining(" , ")));
+                        .collect(Collectors.toList());
     }
 
 }
