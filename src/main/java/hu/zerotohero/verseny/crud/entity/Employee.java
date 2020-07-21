@@ -20,7 +20,7 @@ public class Employee {
     @NotNull(message = "worksAt is required")
     private Location worksAt;
     @OneToOne
-    @JoinColumn(name = "equipment_id", referencedColumnName = "id")
+    @JoinColumn(name = "equipment_id", referencedColumnName = "id", unique = true)
     private Equipment operates;
 
     public long getId() {
