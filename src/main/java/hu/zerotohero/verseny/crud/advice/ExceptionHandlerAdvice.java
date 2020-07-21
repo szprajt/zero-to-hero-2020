@@ -1,5 +1,6 @@
 package hu.zerotohero.verseny.crud.advice;
 
+import org.postgresql.util.PSQLException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -25,6 +26,11 @@ public class ExceptionHandlerAdvice {
                         .stream()
                         .map(objectError -> objectError.getDefaultMessage())
                         .collect(Collectors.toList()));
+    }
+
+    @ExceptionHandler(PSQLException.class)
+    public ResponseEntity handlePSQLException(PSQLException e) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getServerErrorMessage());
     }
 
 }
