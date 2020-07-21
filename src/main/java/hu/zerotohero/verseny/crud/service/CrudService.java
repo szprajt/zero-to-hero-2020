@@ -52,6 +52,7 @@ public class CrudService {
         if (equipment.isPresent()) {
             employee.setOperates(equipment.get());
         }
+        System.out.println(employee);
         validators.stream()
                 .filter(validatable -> validatable.isValidatable(employee.getJob()))
                 .forEach(validatable -> validatable.validate(employee));
