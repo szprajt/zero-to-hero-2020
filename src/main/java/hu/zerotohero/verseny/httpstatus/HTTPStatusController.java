@@ -16,9 +16,9 @@ public class HTTPStatusController {
         try {
             HttpStatus result = HttpStatus.valueOf(statusCode);
             return "Query: " + statusCode + " Response: " + result.getReasonPhrase();
-        } catch (Exception e) {
+        } catch (IllegalArgumentException e) {
             e.printStackTrace();
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
         }
     }
 }
