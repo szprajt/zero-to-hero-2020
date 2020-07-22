@@ -18,7 +18,7 @@ public class HTTPStatusController {
             return "Query: " + statusCode + " Response: " + result.getReasonPhrase();
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
     }
 }
