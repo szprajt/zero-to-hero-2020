@@ -13,7 +13,7 @@ public class WorkerValidator implements Validatable {
 
     @Override
     public boolean isValidatable(Job job) {
-        return Job.CASHHIER.equals(job) || Job.COOK.equals(job);
+        return Job.CASHIER.equals(job) || Job.COOK.equals(job);
     }
 
     @Override
