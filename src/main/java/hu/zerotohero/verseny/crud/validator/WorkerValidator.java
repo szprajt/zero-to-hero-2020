@@ -27,10 +27,10 @@ public class WorkerValidator implements Validatable {
             }
         }
         if (Job.CASHIER.equals(employee.getJob()) && !Type.CASH_REGISTER.equals(employee.getOperates().getType())) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Cashier cnly work with cash register");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Cashier only work with cash register");
         }
         if (Job.COOK.equals(employee.getJob()) && !Type.OVEN.equals(employee.getOperates().getType())) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Cook cnly work with oven");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Cook only work with oven");
         }
     }
 }
