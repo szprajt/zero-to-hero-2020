@@ -16,7 +16,7 @@ public class Equipment {
     private Type type;
     @ManyToOne
     @JoinColumn(name = "location_id")
-    @NotNull(message = "locatedAt is required")
+    @NotNull(message = "locatedat is required")
     @JsonProperty("locatedat")
     private Location locatedAt;
 

@@ -18,7 +18,7 @@ public class Employee {
     private Job job;
     @ManyToOne
     @JoinColumn(name = "location_id")
-    @NotNull(message = "worksAt is required")
+    @NotNull(message = "worksat is required")
     @JsonProperty("worksat")
     private Location worksAt;
     @OneToOne
