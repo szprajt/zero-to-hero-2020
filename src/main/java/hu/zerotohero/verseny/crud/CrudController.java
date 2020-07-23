@@ -47,8 +47,7 @@ public class CrudController {
     }
 
     @DeleteMapping
-    @RequestMapping(value = "/api/location/{id}/", consumes = MediaType.APPLICATION_JSON_VALUE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/api/location/{id}/")
     public ResponseEntity deleteLocation(@PathVariable("id") Long id) {
         LOG.info("New incoming location delete request: {}", id);
         persisterService.deleteLocation(id);
@@ -56,8 +55,7 @@ public class CrudController {
     }
 
     @DeleteMapping
-    @RequestMapping(value = "/api/employee/{id}/", consumes = MediaType.APPLICATION_JSON_VALUE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/api/employee/{id}/")
     public ResponseEntity deleteEmployee(@PathVariable("id") Long id) {
         LOG.info("New incoming employee delete request: {}", id);
         persisterService.deleteEmployee(id);
@@ -65,11 +63,35 @@ public class CrudController {
     }
 
     @DeleteMapping
-    @RequestMapping(value = "/api/equipment/{id}/", consumes = MediaType.APPLICATION_JSON_VALUE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/api/equipment/{id}/")
     public ResponseEntity deleteEquipment(@PathVariable("id") Long id) {
         LOG.info("New incoming equipment delete request: {}", id);
         persisterService.deleteEquipment(id);
         return ResponseEntity.ok().build();
     }
+
+    @PutMapping
+    @RequestMapping(value = "/api/location/{id}/", consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public Location updateLocation(@PathVariable("id") Long id, @Valid @RequestBody final Location location) {
+        LOG.info("New incoming location update request: {}", id, location);
+        return persisterService.updateLocation(id, location);
+    }
+
+    @PutMapping
+    @RequestMapping(value = "/api/employee/{id}/",consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public Employee updateEmployee(@PathVariable("id") Long id, @Valid @RequestBody final Employee employee) {
+        LOG.info("New incoming employee update request: {}", id , employee);
+        return persisterService.updateEmployee(id, employee);
+    }
+
+    @PutMapping
+    @RequestMapping(value = "/api/equipment/{id}/",consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public Equipment updateEquipment(@PathVariable("id") Long id, @Valid @RequestBody final Equipment equipment) {
+        LOG.info("New incoming equipment delete request: {}", id, equipment);
+        return persisterService.updateEquipment(id, equipment);
+    }
+
 }

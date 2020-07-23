@@ -1,5 +1,6 @@
 package hu.zerotohero.verseny.crud.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import hu.zerotohero.verseny.crud.model.Job;
 
 import javax.persistence.*;
@@ -18,6 +19,7 @@ public class Employee {
     @ManyToOne
     @JoinColumn(name = "location_id")
     @NotNull(message = "worksAt is required")
+    @JsonProperty("worksat")
     private Location worksAt;
     @OneToOne
     @JoinColumn(name = "equipment_id", referencedColumnName = "id", unique = true)

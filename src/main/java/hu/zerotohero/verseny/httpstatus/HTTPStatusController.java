@@ -15,7 +15,7 @@ public class HTTPStatusController {
     public String getStatusDescription(@RequestParam(value = "statusCode", defaultValue = "500") Integer statusCode) {
         try {
             HttpStatus result = HttpStatus.valueOf(statusCode);
-            return "Query: " + statusCode + " Response: " + result.getReasonPhrase();
+            return result.getReasonPhrase();
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);

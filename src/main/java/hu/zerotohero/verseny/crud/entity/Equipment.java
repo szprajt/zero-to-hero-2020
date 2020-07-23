@@ -1,5 +1,6 @@
 package hu.zerotohero.verseny.crud.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import hu.zerotohero.verseny.crud.model.Type;
 
 import javax.persistence.*;
@@ -16,6 +17,7 @@ public class Equipment {
     @ManyToOne
     @JoinColumn(name = "location_id")
     @NotNull(message = "locatedAt is required")
+    @JsonProperty("locatedat")
     private Location locatedAt;
 
     public long getId() {

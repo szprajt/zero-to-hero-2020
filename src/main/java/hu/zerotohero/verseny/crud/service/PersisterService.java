@@ -78,4 +78,28 @@ public class PersisterService {
         }
         employeeRepository.deleteById(id);
     }
+
+    public Location updateLocation(final long id, final Location location) {
+        if (!locationRepository.existsById(id)) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Location not found");
+        }
+        location.setId(id);
+        return locationRepository.save(location);
+    }
+
+    public Equipment updateEquipment(final long id, final Equipment equipment) {
+        if (!equipmentRepository.existsById(id)) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Equipment not found");
+        }
+        equipment.setId(id);
+        return equipmentRepository.save(equipment);
+    }
+
+    public Employee updateEmployee(final long id, final Employee employee) {
+        if (!employeeRepository.existsById(id)) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Employee not found");
+        }
+        employee.setId(id);
+        return employeeRepository.save(employee);
+    }
 }
