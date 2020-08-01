@@ -8,7 +8,6 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.concurrent.SynchronousQueue;
 
 @RestController
 public class StairsController {
@@ -23,7 +22,6 @@ public class StairsController {
         Set<Integer> stepSizeSet = new HashSet<>(stepSizeList);
         Integer[] array = Arrays.copyOf(stepSizeSet.toArray(), stepSizeSet.size(), Integer[].class);
         int[] primitiveArray = Arrays.stream(array).mapToInt(Integer::intValue).toArray();
-        System.out.println(numberOfStair + " " +  Arrays.toString(primitiveArray) + " " + primitiveArray.length);
         return countWays(numberOfStair, primitiveArray, primitiveArray.length) + " way is possible";
     }
 

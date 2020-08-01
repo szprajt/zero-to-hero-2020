@@ -4,8 +4,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import hu.zerotohero.verseny.crud.model.Job;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 @Entity
 public class Employee {
@@ -13,6 +15,7 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
     @NotBlank(message = "Name is required")
+    @Pattern(regexp = "^(?:\\w+\\W+){1,2}(?:\\w+)$", message = "Employee name at least 2 maximum 3 word")
     private String name;
     @NotNull(message = "job is required")
     private Job job;
@@ -24,6 +27,9 @@ public class Employee {
     @OneToOne
     @JoinColumn(name = "equipment_id", referencedColumnName = "id", unique = true)
     private Equipment operates;
+    @NotNull
+    @Min(value = 300, message = "Salary at least 300")
+    private int salary;
 
     public long getId() {
         return id;

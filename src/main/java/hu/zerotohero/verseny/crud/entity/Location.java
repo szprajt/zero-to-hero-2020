@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
 
 @Entity
@@ -13,8 +14,10 @@ public class Location {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
     @NotBlank(message = "Name is required")
+    @Pattern(regexp = "^(?:\\w+\\W+){0,1}(?:\\w+)$", message ="Name of location is maximum 2 word")
     private String name;
     @NotBlank(message = "Address is required")
+    @Pattern(regexp = "^[0-9]{4}", message ="Address should start with zip code")
     private String address;
 
     public long getId() {
