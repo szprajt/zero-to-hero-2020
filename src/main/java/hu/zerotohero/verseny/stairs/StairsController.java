@@ -22,7 +22,7 @@ public class StairsController {
         Set<Integer> stepSizeSet = new HashSet<>(stepSizeList);
         Integer[] array = Arrays.copyOf(stepSizeSet.toArray(), stepSizeSet.size(), Integer[].class);
         int[] primitiveArray = Arrays.stream(array).mapToInt(Integer::intValue).toArray();
-        System.out.println(numberOfStair + " " +  primitiveArray + " " + primitiveArray.length);
+        System.out.println(numberOfStair + " " +  primitiveArray.toString() + " " + primitiveArray.length);
         return countWays(numberOfStair, primitiveArray, primitiveArray.length) + " way is possible";
     }
 
