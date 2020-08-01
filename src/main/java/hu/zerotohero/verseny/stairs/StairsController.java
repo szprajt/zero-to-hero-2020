@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.SynchronousQueue;
 
 @RestController
 public class StairsController {
@@ -32,6 +33,7 @@ public class StairsController {
         for (int i = 0; i < len; i++) {
             if (n - arr[i] >= 0) {
                 noWays += countWays(n - arr[i], arr, len);
+                System.out.println(noWays);
             }
         }
         return noWays;
