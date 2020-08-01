@@ -21,7 +21,7 @@ public class SalaryValidator implements Validatable {
 
     @Override
     public boolean isValidatable(Job job) {
-        return true;
+        return Job.COOK.equals(job) || Job.CASHIER.equals(job);
     }
 
     @Override
