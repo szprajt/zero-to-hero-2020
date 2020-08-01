@@ -29,6 +29,7 @@ public class StairsController {
 
 
     private int countWays(int n, int[] arr, int len) {
+        if (n == 0) return 1;
         int noWays = 0;
         for (int i = 0; i < len; i++) {
             if (n - arr[i] >= 0) {
