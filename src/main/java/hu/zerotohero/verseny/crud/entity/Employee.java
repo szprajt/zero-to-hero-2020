@@ -29,7 +29,7 @@ public class Employee {
     private Equipment operates;
     @NotNull
     @Min(value = 300, message = "Salary at least 300")
-    private int salary;
+    private Integer salary;
 
     public long getId() {
         return id;
