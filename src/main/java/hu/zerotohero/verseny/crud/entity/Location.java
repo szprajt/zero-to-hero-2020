@@ -17,7 +17,7 @@ public class Location {
     @Pattern(regexp = "^(?:\\w+\\W+){0,1}(?:\\w+)$", message ="Name of location is maximum 2 word")
     private String name;
     @NotBlank(message = "Address is required")
-    @Pattern(regexp = "^[0-9]{4}", message ="Address should start with zip code")
+    @Pattern(regexp = "^[0-9]{4}[a-zA-Z0-9]$", message ="Address should start with zip code")
     private String address;
 
     public long getId() {
