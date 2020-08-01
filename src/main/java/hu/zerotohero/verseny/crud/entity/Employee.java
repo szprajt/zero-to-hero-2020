@@ -27,6 +27,7 @@ public class Employee {
     @OneToOne
     @JoinColumn(name = "equipment_id", referencedColumnName = "id", unique = true)
     private Equipment operates;
+    @NotNull
     @Min(value = 300, message = "Salary at least 300")
     private Integer salary;
 
@@ -75,6 +76,15 @@ public class Employee {
         return this;
     }
 
+    public Integer getSalary() {
+        return salary;
+    }
+
+    public Employee setSalary(Integer salary) {
+        this.salary = salary;
+        return this;
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
@@ -83,6 +93,7 @@ public class Employee {
                 ", job=" + job +
                 ", worksAt=" + worksAt +
                 ", operates=" + operates +
+                ", salary=" + salary +
                 '}';
     }
 }
